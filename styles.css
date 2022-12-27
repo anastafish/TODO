@@ -1,0 +1,110 @@
+body{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+
+}
+
+.container{
+    padding: 20px;
+    background-color: aquamarine;
+    display: grid;
+    height: 100%;
+    grid-template-rows: 1fr 2fr;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+.header{
+    display: flex;    
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    justify-self: center;
+}
+
+.header > button{
+    justify-self: flex-start;
+}
+
+.project-container{
+    position: relative;
+ display: flex;
+ gap: 20px;
+ align-items: center;
+ justify-items: center;
+}
+
+.project-container > div{
+    background-color:blue;
+}
+
+.title{
+    font-size: 60px;
+    text-align: center;
+}
+
+.new-form{
+    position: static;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 15px;
+    gap: 10px;
+    background-color: blueviolet;
+}
+
+.form-btn{
+display: flex;
+gap: 20px;
+}
+
+.fields{
+    display: flex;
+    gap: 20px;
+}
+
+.fields input{
+    justify-self: flex-end;
+    align-self: flex-start;
+}
+
+.project-container > div{
+    position: relative;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.card button:hover{
+background-color: chocolate;
+}
+
+.card{
+    width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.new-task{      
+  position: absolute;
+  top: 0;
+  left: 0;
+    z-index: 10;
+    position: absolute;
+    background-color: aliceblue;
+    display: none;
+}
+
+.new-task > div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;  
+}

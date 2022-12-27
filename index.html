@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>TODO</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Todo List</h1>
+            <button class="new-btn">New Project</button>
+        </div>
+        <div class="project-container">   
+
+            <form class="new-task">
+            </form>       
+            <form class="new-form" action="">
+                <h2>New Project</h2>
+                <div class="fields">
+                    <label for="">Title:</label>
+                    <input class="input-title" type="text">
+                </div>
+                <div class="fields">
+                    <label for="">Description:</label>
+                    <input class="input-desc" type="text">                    
+                </div>
+                <div class="fields">
+                    <label for="">Due Date:</label>
+                    <input class="input-date" type="datetime-local">
+                </div>
+                <div class="fields">
+                    <label for="">Priority</label>
+                    <input class="input-prior" min="1" type="number">
+                </div>
+                <div class="fields">
+                    <label for="">Notes:</label>
+                    <input class="input-note" type="text">
+                </div>
+                <div class="fields">
+                    <label for="">Completed:
+                        <label for="">Yes</label>
+                        <input value="Yes" class="input-completed" name="complete" type="radio">
+                        <label for="">No</label>
+                        <input value="No" class="input-completed" name="complete" type="radio">
+                    </label>
+                </div>
+                <div class="form-btn">
+                    <button class="create-todo" type="button">Create</button>
+                    <button class="close-form" type="button">Close</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
