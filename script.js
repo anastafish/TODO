@@ -52,24 +52,25 @@ function domProject(){
     maker('button',`btn-tasks${length}`, document.querySelector(`.newtasks${length}`))
     maker('button',`close-tasks${length}`, document.querySelector(`.newtasks${length}`))
     maker('div', `tasks-menu${length}`, document.querySelector(`.card${length}`))
+    maker('button', `close-menu${length}`,document.querySelector(`.tasks-menu${length}`))
+
     
 
-
+    document.querySelector(`.close-menu${length}`).textContent = 'Close'
     document.querySelector(`.close-tasks${length}`).textContent = "Close"
     document.querySelector(`.btn-tasks${length}`).textContent = "Add new Task"
 
     document.querySelector(`.tasks-menu${length}`).style.display = 'none';    
     document.querySelector(`.tasklabel${length}`).textContent = "Enter Your new task"
     document.querySelector(`.newtasks${length}`).style.display = 'none';
-    document.querySelector(`.newtasks${length}`).style.position = 'absolute';
-    document.querySelector(`.newtasks${length}`).style.background = 'red';
     document.querySelector(`.newtasks${length}`).style.bottom = '150px';
     document.querySelector(`.newtasks${length}`).style.right = '-9px';
     document.querySelector(`.newtasks${length}`).style.padding = '20px';
 
 
-
-
+    document.querySelector(`.newtasks${length}`).classList.add('newtasks')
+    document.querySelector(`.close-menu${length}`).setAttribute('data', length)    
+    document.querySelector(`.close-menu${length}`).classList.add('close-menu')    
     document.querySelector(`.addtasks${length}`).classList.add('addtasks')
     document.querySelector(`.addtasks${length}`).setAttribute('data', length)
     document.querySelector(`.viewtasks${length}`).classList.add('viewtasks')
@@ -109,29 +110,35 @@ document.querySelector('.create-todo').addEventListener('click', () => {
 
     document.querySelectorAll('.addtasks').forEach(btn => {
         btn.addEventListener('click', () => {
-            document.querySelector(`.newtasks${btn.getAttribute('data')}`).style.display = 'block';
+            document.querySelector(`.newtasks${btn.getAttribute('data')}`).style.display = 'flex';
         })
         document.querySelector(`.close-tasks${btn.getAttribute('data')}`).addEventListener('click', () => {
             document.querySelector(`.newtasks${btn.getAttribute('data')}`).style.display = 'none';
         })
         document.querySelector(`.btn-tasks${btn.getAttribute('data')}`).addEventListener('click', () => {
             projects[btn.getAttribute('data')].tasks.push(document.querySelector(`.input-tasks${btn.getAttribute('data')}`).value)
-
                 maker('p', `task-item${projects[btn.getAttribute('data')].tasks.length}`, document.querySelector(`.tasks-menu${btn.getAttribute('data')}`))
-                console.log(`.task-item${projects[btn.getAttribute('data')].tasks.length}`)
-                document.querySelector(`.task-item${projects[btn.getAttribute('data')].tasks.length}`).innerHTML = projects[btn.getAttribute('data')].tasks[projects[btn.getAttribute('data')].tasks.length - 1]
+                document.querySelector(`.tasks-menu${btn.getAttribute('data')} > .task-item${projects[btn.getAttribute('data')].tasks.length}`).textContent = projects[btn.getAttribute('data')].tasks[projects[btn.getAttribute('data')].tasks.length - 1]
 
             document.querySelector(`.input-tasks${btn.getAttribute('data')}`).value = "";
             document.querySelector(`.newtasks${btn.getAttribute('data')}`).style.display = 'none';
-        })    
-        document.querySelector(`.viewtasks${btn.getAttribute('data')}`).addEventListener('click', () => {
-            console.log(document.querySelector(`.viewtasks${btn.getAttribute('data')}`))
-            if (document.querySelector(`.tasks-menu${btn.getAttribute('data')}`).style.display === 'none'){
-            document.querySelector(`.tasks-menu${btn.getAttribute('data')}`).style.display = 'block';}
-            else {document.querySelector(`.tasks-menu${btn.getAttribute('data')}`).style.display = 'none'}
-    }) 
+        })            
 })
+
+        document.querySelectorAll('.viewtasks').forEach(viewbtn => {
+            viewbtn.addEventListener('click', () => {
+                document.querySelector(`.tasks-menu${viewbtn.getAttribute('data')}`).style.display = 'block'; 
+            })
+        })  
+
+        document.querySelectorAll('.close-menu').forEach(closebtn => {
+            closebtn.addEventListener('click', () => {
+                document.querySelector(`.tasks-menu${closebtn.getAttribute('data')}`).style.display = 'none';
+            })
+        })
+        
 })
+
 
 
 

@@ -5,6 +5,18 @@ body{
 
 }
 
+button{
+    background-color: aliceblue;
+    border-radius: 20px;
+}
+input{
+    border-radius: 6px;
+}
+
+button:hover{
+    background-color: cornflowerblue;
+}
+
 .container{
     padding: 20px;
     background-color: aquamarine;
@@ -78,9 +90,6 @@ gap: 20px;
     border-radius: 10px;
 }
 
-.card button:hover{
-background-color: chocolate;
-}
 
 .card{
     width: 100%;
@@ -88,6 +97,17 @@ background-color: chocolate;
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.newtasks{
+    background-color:cornflowerblue;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    position: absolute;
 }
 
 .new-task{      
