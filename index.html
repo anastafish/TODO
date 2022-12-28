@@ -10,42 +10,44 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1 class="title">Todo List</h1>
+            <h1 class="title">Todo</h1>
             <button class="new-btn">New Project</button>
         </div>
-        <div class="project-container">   
-
-            <form class="new-task">
-            </form>       
-            <form class="new-form" action="">
+        <div class="project-container">
+            <div class="card50 card"><h3>Title: Homework</h3><h3>Description: Doing my math home work </h3><h3>Due date: 2022-12-28</h3><h3>Priority: Important</h3><h3>Notes: gotta do it quick</h3><h3>Completed: No</h3><button>Add New Task</button><button>View Tasks</button><button class="delproj50 delproj">Delete</button><div style="display: none; bottom: 150px; right: -9px; padding: 20px;"><input><label>Enter Your new task</label><button>Add new Task</button><button>Close</button></div><div  style="display: none;"><button>Close</button><p>science home work</p><p >English Language Homework </p></div></div>
+            <div class="card60 card"><h3>Title: cleaning</h3><h3>Description: Clean the Kitchen </h3><h3>Due date: 2023-01-10</h3><h3>Priority: Normal</h3><h3>Notes: gotta do it quick</h3><h3>Completed: No</h3><button>Add New Task</button><button>View Tasks</button><button class="delproj60 delproj">Delete</button><div style="display: none; bottom: 150px; right: -9px; padding: 20px;"><input><label>Enter Your new task</label><button>Add new Task</button><button>Close</button></div><div  style="display: none;"><button>Close</button><p>science home work</p><p >English Language Homework </p></div></div>
+            <div class="card70 card"><h3>Title: cocking</h3><h3>Description: Cock the lucnh </h3><h3>Due date: 2023-06-1</h3><h3>Priority: Urgent</h3><h3>Notes: gotta do it quick</h3><h3>Completed: No</h3><button>Add New Task</button><button>View Tasks</button><button class="delproj70 delproj">Delete</button><div style="display: none; bottom: 150px; right: -9px; padding: 20px;"><input><label>Enter Your new task</label><button>Add new Task</button><button>Close</button></div><div  style="display: none;"><button>Close</button><p>science home work</p><p >English Language Homework </p></div></div>
+            <form name="my-form" class="new-form" action="">
                 <h2>New Project</h2>
                 <div class="fields">
                     <label for="">Title:</label>
-                    <input class="input-title" type="text">
+                    <input name="title" class="input-title" type="text" required>
                 </div>
                 <div class="fields">
                     <label for="">Description:</label>
-                    <input class="input-desc" type="text">                    
+                    <input class="input-desc" type="text" required>                    
                 </div>
                 <div class="fields">
                     <label for="">Due Date:</label>
-                    <input class="input-date" type="datetime-local">
+                    <input class="input-date" type="date" required>
                 </div>
                 <div class="fields">
                     <label for="">Priority:</label>
-                    <input class="input-prior" min="1" type="number">
+                    <select name="Priority" class="input-prior">
+                        <option value="Normal" selected>Normal</option>
+                        <option value="Important">Important</option>
+                        <option value="Urgent">Urgent</option>
+                    </select>
                 </div>
                 <div class="fields">
                     <label for="">Notes:</label>
                     <input class="input-note" type="text">
                 </div>
                 <div class="fields">
-                    <label for="">Completed:
-                        <label for="">Yes</label>
-                        <input value="Yes" class="input-completed" name="complete" type="radio">
-                        <label for="">No</label>
-                        <input value="No" class="input-completed" name="complete" type="radio">
-                    </label>
+                    <label for="">Completed:</label>
+                        <label for="">Yes<input value="Yes" class="input-completed" name="complete" type="radio"></label>
+                        <label for="">No<input value="No" class="input-completed" name="complete" type="radio"></label>
+                    
                 </div>
                 <div class="form-btn">
                     <button class="create-todo" type="button">Create</button>

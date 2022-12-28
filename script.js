@@ -1,5 +1,5 @@
 const projects = [];
-
+let counter = 3; 
 function maker(elem, cls, dom){
     const element = document.createElement(elem)
     element.classList.add(cls)
@@ -21,6 +21,24 @@ function createProject(title, desc, date, prior, notes, completed){
     return proj;
 }
 
+function validateForm(num) {
+    if(document.querySelector('.input-title').value == ""){
+        document.querySelector('.input-title').validity.valueMissing
+        alert("Enter a title please")
+        return false;
+    }
+    else if(document.querySelector('.input-desc').value == ""){
+        alert("Enter a description please")
+        return false;
+    }
+    else if (document.querySelector('.input-date').value == ""){
+        alert('please Enter a due date')
+        console.log(projects.length)
+        return false;
+    }
+}
+
+
 function domProject(){
   const container = document.querySelector('.project-container')
   const title = document.querySelector('.input-title').value
@@ -34,7 +52,7 @@ function domProject(){
             if(completed[i].checked){radio = completed[i].value}
         }
     projects.push(new Project(title, desc, date, prior, notes, radio))    
-    const length = document.querySelectorAll('.card').length
+    const length = document.querySelectorAll('.card').length - counter;
 
     maker('div', `card${length}`, container)  
     document.querySelector(`.card${length}`).classList.add('card')  
@@ -46,6 +64,7 @@ function domProject(){
     maker('h3', `completed${length}`, document.querySelector(`.card${length}`))
     maker('button', `addtasks${length}`, document.querySelector(`.card${length}`))
     maker('button', `viewtasks${length}`, document.querySelector(`.card${length}`))
+    maker('button', `delproj${length}`, document.querySelector(`.card${length}`)) 
     maker('div',`newtasks${length}`,document.querySelector(`.card${length}`))
     maker('input',`input-tasks${length}`, document.querySelector(`.newtasks${length}`))
     maker('label', `tasklabel${length}`, document.querySelector(`.newtasks${length}`))
@@ -60,21 +79,27 @@ function domProject(){
     document.querySelector(`.close-tasks${length}`).textContent = "Close"
     document.querySelector(`.btn-tasks${length}`).textContent = "Add new Task"
 
-    document.querySelector(`.tasks-menu${length}`).style.display = 'none';    
+    document.querySelector(`.tasks-menu${length}`).style.display = 'none';   
     document.querySelector(`.tasklabel${length}`).textContent = "Enter Your new task"
     document.querySelector(`.newtasks${length}`).style.display = 'none';
     document.querySelector(`.newtasks${length}`).style.bottom = '150px';
     document.querySelector(`.newtasks${length}`).style.right = '-9px';
     document.querySelector(`.newtasks${length}`).style.padding = '20px';
+    document.querySelector(`.delproj${length}`).textContent = "Delete"
 
 
+
+    document.querySelector(`.tasks-menu${length}`).classList.add('tasks-menu')
     document.querySelector(`.newtasks${length}`).classList.add('newtasks')
+    document.querySelector(`.delproj${length}`).classList.add('delproj')
     document.querySelector(`.close-menu${length}`).setAttribute('data', length)    
-    document.querySelector(`.close-menu${length}`).classList.add('close-menu')    
+    document.querySelector(`.close-menu${length}`).classList.add('close-menu') 
     document.querySelector(`.addtasks${length}`).classList.add('addtasks')
     document.querySelector(`.addtasks${length}`).setAttribute('data', length)
     document.querySelector(`.viewtasks${length}`).classList.add('viewtasks')
     document.querySelector(`.viewtasks${length}`).setAttribute('data', length)
+    document.querySelector(`.delproj${length}`).setAttribute('data', length)
+
 
 
     
@@ -93,20 +118,20 @@ function domProject(){
     document.querySelector('.input-prior').value = "";
     document.querySelector('.input-note').value = "";
         
-}    
-
-
-
+}
 
 
 document.querySelector('.new-btn').addEventListener('click', () => {
-    document.querySelector('.input-prior').setAttribute('max', document.querySelectorAll('.card').length + 1);
     document.querySelector('.new-form').style.display = "flex";
 })
 
-document.querySelector('.create-todo').addEventListener('click', () => {    
-    document.querySelector('.new-form').style.display = "none";
+document.querySelector('.create-todo').addEventListener('click', () => {      
+    if (validateForm() === false) return;    
+    else
+    {
     domProject()
+    document.querySelector('.new-form').style.display = "none";
+}
 
     document.querySelectorAll('.addtasks').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -125,11 +150,20 @@ document.querySelector('.create-todo').addEventListener('click', () => {
         })            
 })
 
+        document.querySelectorAll(`.delproj`).forEach(delbtn => {
+            delbtn.addEventListener('click', () => {
+                projects.splice(delbtn.getAttribute('data'), 1)
+                document.querySelector(`.card${delbtn.getAttribute('data')}`).remove()
+            })
+        })      
+        
+
+
         document.querySelectorAll('.viewtasks').forEach(viewbtn => {
             viewbtn.addEventListener('click', () => {
-                document.querySelector(`.tasks-menu${viewbtn.getAttribute('data')}`).style.display = 'block'; 
+                document.querySelector(`.tasks-menu${viewbtn.getAttribute('data')}`).style.display = 'flex'; 
             })
-        })  
+        })     
 
         document.querySelectorAll('.close-menu').forEach(closebtn => {
             closebtn.addEventListener('click', () => {
@@ -138,6 +172,35 @@ document.querySelector('.create-todo').addEventListener('click', () => {
         })
         
 })
+
+
+document.querySelector('.delproj50').addEventListener('click', () => {
+    document.querySelector('.card50').remove()
+    if (counter <= 3){
+        counter -= 1;
+        console.log(counter)
+    }
+    else return;
+})
+
+document.querySelector('.delproj60').addEventListener('click', () => {
+    document.querySelector('.card60').remove()
+    if (counter <= 3){
+        counter -= 1;
+        console.log(counter)
+    }
+    else return;
+})
+
+document.querySelector('.delproj70').addEventListener('click', () => {
+    document.querySelector('.card70').remove()
+    if (counter <= 3){
+        counter -= 1;
+        console.log(counter)
+    }
+    else return;
+})
+
 
 
 

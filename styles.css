@@ -1,7 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap');
+
+*{
+    font-family: 'Secular One', sans-serif;
+
+}
+
 body{
+    display: flex;
     padding: 0;
     margin: 0;
-    height: 100%;
+    height: 97vh;
+    width: 100%;
 
 }
 
@@ -10,18 +20,21 @@ button{
     border-radius: 20px;
 }
 input{
+    border: 1px solid ;
     border-radius: 6px;
 }
 
 button:hover{
-    background-color: cornflowerblue;
+    background-color: greenyellow;
 }
 
 .container{
-    padding: 20px;
-    background-color: aquamarine;
+    padding: 10px;
+    background-color: #3D969B;
     display: grid;
     height: 100%;
+    width: 100%;
+    grid-template-columns: 1fr 4fr;
     grid-template-rows: 1fr 2fr;
     align-items: center;
     justify-content: center;
@@ -29,18 +42,41 @@ button:hover{
 }
 
 .header{
+    padding: 10px;
+    background-color: brown;
+    height: 100%;
+    width: 100%;
+    grid-column: 1/2;
+    grid-row: 1/ 3;
     display: flex;    
     flex-direction: column;
-    align-items: center;
+    align-items:center ;
     justify-content: start;
-    justify-self: center;
+    gap: 160px;
+}
+
+.header h1{
+    color: #A9DFBF;
+    letter-spacing: 5px;
+    font-family: 'Rubik Bubbles', cursive;
+
 }
 
 .header > button{
-    justify-self: flex-start;
+    border: none;
+    border: 1px solid snow;
+    background-color: #1BC94D;
+    font-size: 25px;
+width: fit-content;
+height: 10%;
+}
+.header > button:hover{
+    background-color: #D0D3D4;
 }
 
 .project-container{
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
     position: relative;
  display: flex;
  gap: 20px;
@@ -49,7 +85,12 @@ button:hover{
 }
 
 .project-container > div{
-    background-color:blue;
+    background-color:#909497;
+    width: 65%;
+}
+
+.project-container > div h3{
+    text-align: center;
 }
 
 .title{
@@ -66,7 +107,27 @@ button:hover{
     padding: 20px;
     border-radius: 15px;
     gap: 10px;
-    background-color: blueviolet;
+    background-color: #D0D3D4;
+}
+
+.new-form input:invalid{
+    border: 1px solid red;
+}
+
+.new-form input:valid{
+    border: 1px solid greenyellow;
+}
+
+.delproj:hover{
+    background-color: red;
+}
+
+.new-form > h2{
+    font-size: 35px;
+}
+
+.new-form label{
+    font-size: 20px;
 }
 
 .form-btn{
@@ -76,12 +137,33 @@ gap: 20px;
 
 .fields{
     display: flex;
-    gap: 20px;
+    gap: 40px;
+    justify-content: space-between;
+}
+
+.tasks-menu{    
+    border-radius: 10px; 
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: 110px;
+    background-color: lightblue;
+    right: 85px;
+    padding: 20px;
+}
+
+.tasks-menu > button{
+    width: fit-content;
+}
+
+.fields{
+    width: 100%;
+    height: 100%;
 }
 
 .fields input{
-    justify-self: flex-end;
-    align-self: flex-start;
+    align-self: flex-end;
 }
 
 .project-container > div{
@@ -92,8 +174,6 @@ gap: 20px;
 
 
 .card{
-    width: 100%;
-  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
@@ -108,6 +188,10 @@ gap: 20px;
     justify-content: center;
     gap: 5px;
     position: absolute;
+}
+
+.newtasks button{
+    width: 80%;
 }
 
 .new-task{      
