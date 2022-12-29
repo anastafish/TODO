@@ -92,7 +92,7 @@ for (let i = 0; i < projects.length; i++){
         
         document.querySelectorAll('.edit-tasks').forEach(editbtn => {
             editbtn.addEventListener('click', () => {
-                if (document.querySelector(`.title${editbtn.getAttribute('data')}`).contentEditable == 'inherit' || document.querySelector(`.title${editbtn.getAttribute('data')}`).contentEditable == 'false')
+                if (document.querySelector(`.title${editbtn.getAttribute('data')}`).contentEditable == 'false')
                 {
                 document.querySelector(`.edittasks${editbtn.getAttribute('data')}`).textContent = 'Done'  
                 document.querySelector(`.edittasks${editbtn.getAttribute('data')}`).style.background = 'green'
@@ -113,7 +113,7 @@ for (let i = 0; i < projects.length; i++){
                 document.querySelector(`.completed${editbtn.getAttribute('data')}`).style.background = 'white';
 
                 }
-                else {
+                else {                    
                 document.querySelector(`.edittasks${editbtn.getAttribute('data')}`).textContent = 'Edit'  
                 document.querySelector(`.edittasks${editbtn.getAttribute('data')}`).style.background = 'yellow'
                 document.querySelector(`.title${editbtn.getAttribute('data')}`).contentEditable = false;
@@ -129,6 +129,9 @@ for (let i = 0; i < projects.length; i++){
                 document.querySelector(`.prior${editbtn.getAttribute('data')}`).style.background = 'none';
                 document.querySelector(`.notes${editbtn.getAttribute('data')}`).style.background = 'none';
                 document.querySelector(`.completed${editbtn.getAttribute('data')}`).style.background = 'none'; 
+
+                // projects[i].title = document.querySelector(`.title${editbtn.getAttribute('data')}`).textContent;
+
 
    
             }
