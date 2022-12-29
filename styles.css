@@ -7,6 +7,8 @@
 }
 
 body{
+    background-color: #BBD3DC;
+
     display: flex;
     padding: 0;
     margin: 0;
@@ -30,7 +32,7 @@ button:hover{
 
 .container{
     padding: 10px;
-    background-color: #3D969B;
+    background-color: #BBD3DC;
     display: grid;
     height: 100%;
     width: 100%;
@@ -43,7 +45,7 @@ button:hover{
 
 .header{
     padding: 10px;
-    background-color: brown;
+    background-color: #D6193B;
     height: 100%;
     width: 100%;
     grid-column: 1/2;
@@ -79,15 +81,22 @@ height: 10%;
     grid-row: 1 / 3;
     position: relative;
  display: flex;
+ flex-wrap: nowrap;
  gap: 20px;
  align-items: center;
  justify-items: center;
+ justify-content: center;
 }
 
 .project-container > div{
     background-color:#909497;
-    width: 65%;
+    width: 10rem;
+    height: fit-content;
+    position: static;
+    padding: 10px;
+    border-radius: 10px;
 }
+
 
 .project-container > div h3{
     text-align: center;
@@ -98,8 +107,20 @@ height: 10%;
     text-align: center;
 }
 
+.test-newtask{
+    background-color: #5BB22F;
+}
+
+.test-edit{
+    background-color: yellow;
+}
+
+.test-view{
+    background-color: #2FA2B2;
+}
+
 .new-form{
-    position: static;
+    position: absolute;
     display: none;
     flex-direction: column;
     align-items: center;
@@ -107,7 +128,7 @@ height: 10%;
     padding: 20px;
     border-radius: 15px;
     gap: 10px;
-    background-color: #D0D3D4;
+    background-color: #909497;
 }
 
 .new-form input:invalid{
@@ -119,7 +140,7 @@ height: 10%;
 }
 
 .delproj:hover{
-    background-color: red;
+    background-color: white;
 }
 
 .new-form > h2{
@@ -153,6 +174,36 @@ gap: 20px;
     padding: 20px;
 }
 
+.addtasks{
+    background-color: #5BB22F;
+}
+
+
+.edit-tasks{
+    background-color: yellow;
+}
+
+.edit-tasks:hover{
+    background-color: white;
+}
+
+
+.addtasks:hover{
+    background-color: white;
+}
+
+.viewtasks{
+    background-color:#2FA2B2 ;
+}
+
+.viewtasks:hover{
+    background-color:white ;
+}
+
+.delproj{
+    background-color:red ;
+}
+
 .tasks-menu > button{
     width: fit-content;
 }
@@ -166,14 +217,12 @@ gap: 20px;
     align-self: flex-end;
 }
 
-.project-container > div{
-    position: relative;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-
 .card{
+  background:transparent url('./—Pngtree—polaroid\ photo\ frame\ transparent_6275853.png');
+  background-position: center;
+  background-size: 210% 185%;
+    background-repeat: no-repeat;
+
   position: absolute;
   top: 0;
   left: 0;

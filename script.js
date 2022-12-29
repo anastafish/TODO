@@ -52,7 +52,7 @@ function domProject(){
             if(completed[i].checked){radio = completed[i].value}
         }
     projects.push(new Project(title, desc, date, prior, notes, radio))    
-    const length = document.querySelectorAll('.card').length - counter;
+    const length = projects.length;
 
     maker('div', `card${length}`, container)  
     document.querySelector(`.card${length}`).classList.add('card')  
@@ -62,8 +62,9 @@ function domProject(){
     maker('h3', `prior${length}`, document.querySelector(`.card${length}`))
     maker('h3', `notes${length}`, document.querySelector(`.card${length}`))
     maker('h3', `completed${length}`, document.querySelector(`.card${length}`))
-    maker('button', `addtasks${length}`, document.querySelector(`.card${length}`))
     maker('button', `viewtasks${length}`, document.querySelector(`.card${length}`))
+    maker('button', `edittasks${length}`, document.querySelector(`.card${length}`)) 
+    maker('button', `addtasks${length}`, document.querySelector(`.card${length}`)) 
     maker('button', `delproj${length}`, document.querySelector(`.card${length}`)) 
     maker('div',`newtasks${length}`,document.querySelector(`.card${length}`))
     maker('input',`input-tasks${length}`, document.querySelector(`.newtasks${length}`))
@@ -89,6 +90,8 @@ function domProject(){
 
 
 
+    document.querySelector(`.edittasks${length}`).classList.add('edit-tasks')
+    document.querySelector(`.edittasks${length}`).setAttribute('data', length) 
     document.querySelector(`.tasks-menu${length}`).classList.add('tasks-menu')
     document.querySelector(`.newtasks${length}`).classList.add('newtasks')
     document.querySelector(`.delproj${length}`).classList.add('delproj')
@@ -102,15 +105,16 @@ function domProject(){
 
 
 
-    
-    document.querySelector(`.title${length}`).textContent = `Title: ${projects[length].title}`;
-    document.querySelector(`.desc${length}`).textContent = `Description: ${projects[length].desc}`;
-    document.querySelector(`.date${length}`).textContent = `Due date: ${projects[length].date}`;
-    document.querySelector(`.prior${length}`).textContent = `Priority: ${projects[length].prior}`;
-    document.querySelector(`.notes${length}`).textContent = `Notes: ${projects[length].notes}`;
-    document.querySelector(`.completed${length}`).textContent = `Completed: ${projects[length].completed}`;
+    document.querySelector(`.title${length}`).textContent = `Title: ${projects[length -1].title}`;
+    document.querySelector(`.desc${length}`).textContent = `Description: ${projects[length-1].desc}`;
+    document.querySelector(`.date${length}`).textContent = `Due date: ${projects[length-1].date}`;
+    document.querySelector(`.prior${length}`).textContent = `Priority: ${projects[length-1].prior}`;
+    document.querySelector(`.notes${length}`).textContent = `Notes: ${projects[length-1].notes}`;
+    document.querySelector(`.completed${length}`).textContent = `Completed: ${projects[length-1].completed}`;
     document.querySelector(`.addtasks${length}`).textContent = 'Add New Task';
     document.querySelector(`.viewtasks${length}`).textContent = 'View Tasks';
+    document.querySelector(`.edittasks${length}`).textContent = 'Edit'
+
 
     document.querySelector('.input-title').value = "";
     document.querySelector('.input-desc').value = "";
@@ -141,18 +145,59 @@ document.querySelector('.create-todo').addEventListener('click', () => {
             document.querySelector(`.newtasks${btn.getAttribute('data')}`).style.display = 'none';
         })
         document.querySelector(`.btn-tasks${btn.getAttribute('data')}`).addEventListener('click', () => {
-            projects[btn.getAttribute('data')].tasks.push(document.querySelector(`.input-tasks${btn.getAttribute('data')}`).value)
-                maker('p', `task-item${projects[btn.getAttribute('data')].tasks.length}`, document.querySelector(`.tasks-menu${btn.getAttribute('data')}`))
-                document.querySelector(`.tasks-menu${btn.getAttribute('data')} > .task-item${projects[btn.getAttribute('data')].tasks.length}`).textContent = projects[btn.getAttribute('data')].tasks[projects[btn.getAttribute('data')].tasks.length - 1]
+            projects[btn.getAttribute('data')-1].tasks.push(document.querySelector(`.input-tasks${btn.getAttribute('data')}`).value)
+                maker('p', `task-item${projects[btn.getAttribute('data') -1].tasks.length}`, document.querySelector(`.tasks-menu${btn.getAttribute('data')}`))
+                document.querySelector(`.tasks-menu${btn.getAttribute('data')} > .task-item${projects[btn.getAttribute('data') -1].tasks.length}`).textContent = projects[btn.getAttribute('data') -1].tasks[projects[btn.getAttribute('data') -1].tasks.length - 1]
 
             document.querySelector(`.input-tasks${btn.getAttribute('data')}`).value = "";
             document.querySelector(`.newtasks${btn.getAttribute('data')}`).style.display = 'none';
         })            
 })
 
+        
+        document.querySelectorAll('.edit-tasks').forEach(editbtn => {
+            editbtn.addEventListener('click', () => {
+                if (document.querySelector(`.title${editbtn.getAttribute('data')}`).contentEditable == 'inherit' || document.querySelector(`.title${editbtn.getAttribute('data')}`).contentEditable == 'false')
+                {
+                document.querySelector(`.edittasks${editbtn.getAttribute('data')}`).textContent = 'Done'  
+                document.querySelector(`.edittasks${editbtn.getAttribute('data')}`).style.background = 'green'
+                document.querySelector(`.title${editbtn.getAttribute('data')}`).contentEditable = true;
+                document.querySelector(`.desc${editbtn.getAttribute('data')}`).contentEditable = true;
+                document.querySelector(`.date${editbtn.getAttribute('data')}`).contentEditable = true;
+                document.querySelector(`.prior${editbtn.getAttribute('data')}`).contentEditable = true;
+                document.querySelector(`.notes${editbtn.getAttribute('data')}`).contentEditable = true;
+                document.querySelector(`.completed${editbtn.getAttribute('data')}`).contentEditable = true;
+
+                document.querySelector(`.title${editbtn.getAttribute('data')}`).style.background = 'white';
+                document.querySelector(`.desc${editbtn.getAttribute('data')}`).style.background = 'white';
+                document.querySelector(`.date${editbtn.getAttribute('data')}`).style.background = 'white';
+                document.querySelector(`.prior${editbtn.getAttribute('data')}`).style.background = 'white';
+                document.querySelector(`.notes${editbtn.getAttribute('data')}`).style.background = 'white';
+                document.querySelector(`.completed${editbtn.getAttribute('data')}`).style.background = 'white';
+                }
+                else {
+                document.querySelector(`.edittasks${editbtn.getAttribute('data')}`).textContent = 'Edit'  
+                document.querySelector(`.edittasks${editbtn.getAttribute('data')}`).style.background = 'yellow'
+                document.querySelector(`.title${editbtn.getAttribute('data')}`).contentEditable = false;
+                document.querySelector(`.desc${editbtn.getAttribute('data')}`).contentEditable = false;
+                document.querySelector(`.date${editbtn.getAttribute('data')}`).contentEditable = false;
+                document.querySelector(`.prior${editbtn.getAttribute('data')}`).contentEditable = false;
+                document.querySelector(`.notes${editbtn.getAttribute('data')}`).contentEditable = false;
+                document.querySelector(`.completed${editbtn.getAttribute('data')}`).contentEditable = false;
+            
+                document.querySelector(`.title${editbtn.getAttribute('data')}`).style.background = 'none';
+                document.querySelector(`.desc${editbtn.getAttribute('data')}`).style.background = 'none';
+                document.querySelector(`.date${editbtn.getAttribute('data')}`).style.background = 'none';
+                document.querySelector(`.prior${editbtn.getAttribute('data')}`).style.background = 'none';
+                document.querySelector(`.notes${editbtn.getAttribute('data')}`).style.background = 'none';
+                document.querySelector(`.completed${editbtn.getAttribute('data')}`).style.background = 'none';    
+            }
+            })
+        })
+
         document.querySelectorAll(`.delproj`).forEach(delbtn => {
             delbtn.addEventListener('click', () => {
-                projects.splice(delbtn.getAttribute('data'), 1)
+                delete projects[delbtn.getAttribute('data') -1]
                 document.querySelector(`.card${delbtn.getAttribute('data')}`).remove()
             })
         })      
@@ -170,6 +215,7 @@ document.querySelector('.create-todo').addEventListener('click', () => {
                 document.querySelector(`.tasks-menu${closebtn.getAttribute('data')}`).style.display = 'none';
             })
         })
+       
         
 })
 
