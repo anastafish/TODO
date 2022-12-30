@@ -133,6 +133,10 @@ height: 10%;
     background-color: #A9DFBF;
 }
 
+.close-form:hover{
+    background-color: red;
+}
+
 .new-form input:invalid{
     border: 1px solid red;
 }
@@ -262,4 +266,8 @@ gap: 20px;
     justify-content: center;
     align-items: center;
     justify-items: center;  
+}
+
+.newtasks > button:last-of-type:hover{
+    background-color: red;
 }

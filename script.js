@@ -390,32 +390,6 @@ document.querySelector('.create-todo').addEventListener('click', () => {
 })
 
 
-// document.querySelector('.delproj50').addEventListener('click', () => {
-//     document.querySelector('.card50').remove()
-//     if (counter <= 3){
-//         counter -= 1;
-//     }
-//     else return;
-// })
-
-// document.querySelector('.delproj60').addEventListener('click', () => {
-//     document.querySelector('.card60').remove()
-//     if (counter <= 3){
-//         counter -= 1;
-//     }
-//     else return;
-// })
-
-// document.querySelector('.delproj70').addEventListener('click', () => {
-//     document.querySelector('.card70').remove()
-//     if (counter <= 3){
-//         counter -= 1;
-//     }
-//     else return;
-// })
-
-
-
 
 
 document.querySelector('.close-form').addEventListener('click', () => {
