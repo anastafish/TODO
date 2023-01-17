@@ -1,4 +1,3 @@
-// localStorage.clear('projects')
 let projects = JSON.parse(localStorage.getItem('projects') || "[]");
 
 for (let i = 0; i < projects.length; i++){

@@ -45,7 +45,7 @@ button:hover{
 
 .header{
     padding: 10px;
-    background-color: #D6193B;
+    background-color: wheat;
     height: 100%;
     width: 100%;
     grid-column: 1/2;
@@ -55,12 +55,12 @@ button:hover{
     align-items:center ;
     justify-content: start;
     gap: 160px;
+    border-right:1px solid white;
 }
 
 .header h1{
-    color: #A9DFBF;
+    color: black;
     letter-spacing: 5px;
-    font-family: 'Rubik Bubbles', cursive;
 
 }
 
@@ -68,12 +68,25 @@ button:hover{
     border: none;
     border: 1px solid snow;
     background-color: #1BC94D;
-    font-size: 25px;
-width: fit-content;
-height: 10%;
+    width: 90%;
+    font-size: 20px;
+    height: 10%;
+    cursor: pointer;
 }
 .header > button:hover{
     background-color: #D0D3D4;
+}
+
+.header button{
+    font-size: 25px;
+    word-spacing: 5px;
+}
+
+.header-top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .project-container{
@@ -227,11 +240,11 @@ gap: 20px;
   background:transparent url('./—Pngtree—polaroid\ photo\ frame\ transparent_6275853.png');
   background-position: center;
   background-size: 210% 185%;
-    background-repeat: no-repeat;
-
+  background-repeat: no-repeat;
   position: absolute;
   top: 0;
   left: 0;
+  padding: 10px;
 }
 
 .newtasks{
